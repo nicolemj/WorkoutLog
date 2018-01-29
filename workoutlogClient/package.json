@@ -11,7 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "http-server": "^0.9.0"
+  },
+  "dependencies": {
+    "sequelize": "^4.32.2"
   }
-
- 
 }

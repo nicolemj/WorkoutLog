@@ -43,20 +43,22 @@ sequelize.authenticate().then(
     //matches the model we defined
     //Doesn't drop the db
     User.sync();
-    //User.sync({ force:true });//drops the table compeletly (line 27ish)
+
+  //DANGER
+    //User.sync({ force:true });   // Used to drop a table
 
     app.use(bodyParser.json());
 
     app.post('/api/user', function(req, res) {
         //when we post to api user, it will want a user object in the body
-        var user = req.body.user.username;
+        var username = req.body.user.username;
         var pass = req.body.user.password;
         //Need to create a user object and use sequelize to put that user into 
         //our database.
     
 
     User.create({
-        username: user,
+        username: username,
         passwordhash: ""
     }).then(
         //Sequelize is going to return the object it created from db.

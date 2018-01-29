@@ -1,9 +1,9 @@
 {
-  "name": "workoutlog",
+  "name": "client",
   "description": "",
   "main": "index.js",
   "authors": [
-    "Nicole Jeffries"
+    "Nicole Jeffries <nicolejeffries0118@gmail.com>"
   ],
   "license": "ISC",
   "homepage": "https://github.com/nicolemj/portfolio",

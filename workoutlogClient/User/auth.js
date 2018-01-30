@@ -55,7 +55,9 @@ $(function(){
         $(".disabled").removeClass("disabled");
         $("#loginout").text("Logout");
     })
-
+    .always(function(){
+        alert("We hope you liked our updates!");
+    })
 
     .fail(function(){
         $("#li_error").text("There was an issue with your username or password").show();

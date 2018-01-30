@@ -5,7 +5,6 @@ var sequelize = new Sequelize('workoutlog', 'postgres', 'Jonj0815!', {
     dialect: 'postgres'
 });
 
-
 sequelize.authenticate().then(
     function() {
         console.log('connected to workoutlog postgres db');

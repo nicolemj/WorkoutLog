@@ -36,7 +36,7 @@ $(".nav-tabs a[data-toggle=tab]").on("click", function(e) {
     });
 
 //bind tab change events
-$('a[data-toggle ="tab"]').on('shown.bs.tab', function (e) {
+$('a[data-toggle ="tab"]').on('shown.bs.tab', function(e) {
     var target = $(e.target).attr("href"); // activated tab
     if (target === "#log") {
     WorkoutLog.log.setDefinitions();
@@ -50,7 +50,7 @@ if (target === "#history") {
 // bind enter key
 $(document).on("keypress", function(e) {
     if (e.which === 13) { // enter key
-        if ($("#signup-modal").is(":visible")) {
+        if($("#signup-modal").is(":visible")) {
             $("#signup").trigger("click");
         }
         if ($("#login-modal").is(":visible")) {
@@ -58,6 +58,19 @@ $(document).on("keypress", function(e) {
         }
     }
 
+});
+
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr("href"); // activated tab
+    if (target === "#log") {
+        WorkoutLog.log.setDefinitions();
+    }
+    if (target === "#update-log") {
+        WorkoutLog.log.setDefinitions();
+    }
+    if (target === "#history") {
+        WorkoutLog.log.setHistory();
+    }
 });
 
 // setHeader if we 

@@ -10,19 +10,18 @@ $(function(){
             data: JSON.stringify(user),
             contentType: "application/json"
         });
-        signup
-        .done(function(data) {
+        signup.done(function(data) {
             if (data.sessionToken) {
                 WorkoutLog.setAuthHeader(data.sessionToken);
-                console.log("You made it!");
-                console.log(data.sessionToken);
+                WorkoutLog.definition.fetchAll();
+                WorkoutLog.log.fetchAll();
             }
 
             $("#signup-modal").modal("hide");
             $(".disabled").removeClass("disabled");
-            //$("#loginout").text("Logout");
+            $("#loginout").text("Logout");
             //go to difine tab
-            //$('.nav-tabs a[href="#define"]').tab('show);
+            $('.nav-tabs a[href="#define"]').tab('show');
 
         })
         .fail(function() {
@@ -44,21 +43,17 @@ $(function(){
             contentType: "application/json"     
     });
     
-    login
-    .done(function(data) {
+    login.done(function(data) {
         if (data.sessionToken) {
         WorkoutLog.setAuthHeader(data.sessionToken);       
-        console.log(data.sessionToken);
+        WorkoutLog.definition.fetchAll();
+        WorkoutLog.log.fetchAll();
         }
 
         $("#login-modal").modal("hide");
         $(".disabled").removeClass("disabled");
         $("#loginout").text("Logout");
     })
-    .always(function(){
-        alert("We hope you liked our updates!");
-    })
-
     .fail(function(){
         $("#li_error").text("There was an issue with your username or password").show();
        });
@@ -69,7 +64,7 @@ loginout: function() {
   if (window.localStorage.getItem("sessionToken")) {
      window.localStorage.removeItem("sessionToken");
      $("#loginout").text("Login");
-  }
+    }
 }
 });
 

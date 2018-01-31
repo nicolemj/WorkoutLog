@@ -3,51 +3,55 @@ $(function() {
 		definition: {
 			userDefinitions: [],
 
-    create: function() {
-        var def = { 
-            desc: $("#def-description").val(),
-            type: $("#def-logtype").val()
-        };
-        var postData = { definition: def };
-        var define = $.ajax({
-            type: "POST",
-            url: WorkoutLog.API_BASE + "definition",
-            data: JSON.stringify(postData),
-            contentType: "application/json"
-        });
-        
-        define.done(function(data) {
+			create: function() {
 
-    WorkoutLog.definition.userDefinitions.push(data.definition);
-    });
-                    },
-},
+				var def = { 
+		         		desc: $("#def-description").val(),
+						type: $("#def-logtype").val()
+				};
+				var postData = { definition: def };
+		      	var define = $.ajax({
 
-		fetchAll: function() {
-            var fetchDefs = $.ajax({
-                type: "GET",
-                url: WorkoutLog.API_BASE + "definition",
-                headers: {
-                    "authorization": window.localStorage.getItem("sessionToken")
-                }
-        })
-        .done(function(data) {
-                WorkoutLog.definition.userDefinitions = data;
-              })
-        .fail(function(err) {
-            console.log(err);
-        });
-    }
-}
+         	type: "POST",
+	         	url: WorkoutLog.API_BASE + "definition",
+	         	data: JSON.stringify(postData),
+	         	contentType: "application/json"
+		      	});
 
-	
-    // bindings
+		      	define.done(function(data) {
+	      			WorkoutLog.definition.userDefinitions.push(data.definition);
+		      		$("#def-description").val("");
+					$("#def-logtype").val("");
+					$('a[href="#log"]').tab("show");
 
-    $("#def-save").on("click", WorkoutLog.definition.create);
+		      	});
+		  },
+
+		  fetchAll: function() {
+			 var fetchDefs = $.ajax({
+		         type: "GET",
+		         url: WorkoutLog.API_BASE + "definition",
+		         headers: {
+		         	"authorization": window.localStorage.getItem("sessionToken")
+		         }
+		      })
+		      .done(function(data) {
+		         WorkoutLog.definition.userDefinitions = data;
+		      })
+		      .fail(function(err) {
+		         console.log(err);
+		      });
+		  }
+		}
+	});
+
+	// bindings
+		$("#def-save").on("click", WorkoutLog.definition.create);
+
 
    // fetch definitions if we already are authenticated and refreshed
-
-   if (window.localStorage.getItem("sessionToken")) {
-    WorkoutLog.definition.fetchAll();
-         }
-        });
+    if (window.localStorage.getItem("sessionToken")) {
+      WorkoutLog.definition.fetchAll();
+   }
+   
+});

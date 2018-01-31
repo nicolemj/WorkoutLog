@@ -10,11 +10,11 @@
   "author": "Nicole Jeffries",
   "license": "MIT",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.1",
-    "dotenv": "^5.0.0",
+    "dotenv": "^4.0.0",
     "express": "^4.13.4",
-    "jsonwebtoken": "^8.1.1",
+    "jsonwebtoken": "^7.2.1",
     "pg": "^4.5.6",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.23.3"

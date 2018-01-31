@@ -4,6 +4,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var sequelize = require('./db');
+var User sequelize.import('./model/user');
 
 sequelize.sync(); // sync( {force: true}), to drop then create each time the app starts!
 
@@ -18,9 +19,6 @@ app.use('/api/login', require('./routes/session'));
 
 app.use('/api/log', require('./routes/log'));
 app.use('/api/definition', require('./routes/definition'));
-app.use('/api/test', function(req, res){
-	res.send("Hello World");
-});
 
 
 
